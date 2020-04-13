@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeedForDrifting</title>
     {% load static %}
-    <link rel="icon" type="image/png" href="{% static 'acserver/img/logo.png' %}">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/276083751887306763/699261855570591795/382-3825120_assetto-corsa-competizione-logo.png" width="40px" height="40px">
 
     <link rel="stylesheet" href="{% static 'acserver/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'acserver/css/loading.css' %}">
@@ -29,7 +29,9 @@
     </div>
 
     <nav id="navBar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img src="https://cdn.discordapp.com/attachments/276083751887306763/699261855570591795/382-3825120_assetto-corsa-competizione-logo.png" width="40px" height="40px" alt="logo">
+        </a>
         <a class="navbar-brand" href="#">NeedForDrifting</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,6 +51,8 @@
 
     
 
+    {% block collapse %}
+    {% endblock collapse %}
     {% block content %}
     {% endblock content %}
 

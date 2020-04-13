@@ -1,6 +1,6 @@
 {% extends 'acserver/base.html' %}
 {% load static %}
-{% block content %}
+{% block collapse %}
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -41,6 +41,31 @@
     </a>
   </div>
 
+{% endblock collapse %}
+{% block content %}
+<div class="separator"></div>
+<div class="container pt-1">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-item-center">
+            <div class="listing text-white mr-5">
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+            </div>
+            <div class="listing text-white ml-5">
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+                <P class="lead">voiture</P>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 {% block script %}
 {% endblock script %}

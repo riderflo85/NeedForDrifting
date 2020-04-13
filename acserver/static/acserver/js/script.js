@@ -8,5 +8,5 @@ $(document).ready(function() {
         $('#container-msg').fadeOut("slow", function(el) {
             this.remove();
         });
-    }, 2000);
+    }, 6000);
 });
