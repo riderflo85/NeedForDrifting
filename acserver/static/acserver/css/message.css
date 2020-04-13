@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100');
+
+#container-msg {
+    font-family: 'Roboto Mono', monospace;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    z-index: 10001;
+}
+  
+.text-welcome {
+    margin-bottom: 50rem;
+    font-weight: 100;
+    font-size: 70px;
+    color: #FAFAFA;
+}
+.dud {
+    color: #757575;
+}
