@@ -9,3 +9,5 @@ ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+INSTALLED_APPS.append('django_extensions')
