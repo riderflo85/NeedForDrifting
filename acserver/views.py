@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from .models import Server
 
-# Create your views here.
+
 def index(request):
-    return render(request, 'acserver/index.html')
+    context = {}
+    context['servers'] = Server.objects.all()
+    return render(request, 'acserver/index.html', context)
