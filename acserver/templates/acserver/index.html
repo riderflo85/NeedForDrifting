@@ -48,20 +48,24 @@
     <div class="row">
         <div class="col-12 d-flex justify-content-center align-item-center">
             {% for server in servers %}
-                <div class="card text-white text-center bg-dark mx-5">
-                    <div class="card-header">{{ server.name }}</div>
-                    <div class="card-body text-white">
-                        <h5 class="text-info">Piste</h5>
-                        <p class="card-text">{{ server.piste.name }}</p>
-                        <h5 class="text-info">Voitures</h5>
-                        {% for car in server.listing_cars %}
-                        <P class="card-text">{{ car }}</P>
-                        {% endfor %}
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-info">Télécharger le pack</a>
-                    </div>
+            <div class="card text-white text-center bg-dark mx-5">
+                <div class="card-header">{{ server.name }}</div>
+                <div class="card-body text-white">
+                    <h5 class="text-info">Piste</h5>
+                    <p class="card-text" data-addon="{{ server.track.addon }}">{{ server.track.name }}</p>
+                    <h5 class="text-info">Voitures</h5>
+                    {% for car in server.cars.all %}
+                    <P class="card-text">{{ car.name }}</P>
+                    {% endfor %}
                 </div>
+                <div class="card-footer">
+                    {% if server.track.addon == True %}
+                    <button type="button" class="btn btn-info">Télécharger le pack</button>
+                    {% else %}
+                    <h6><strong class="text-info">Inclus de base dans le jeu</strong></h5>
+                    {% endif %}
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
