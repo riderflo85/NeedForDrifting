@@ -43,33 +43,52 @@
 
 {% endblock collapse %}
 {% block content %}
+
 <div class="separator"></div>
 <div class="container pt-1">
     <div class="row">
-        <div class="col-12 d-flex justify-content-center align-item-center">
+        <div class="col-12 d-flex justify-content-center align-item-center" id="cardServ">
             {% for server in servers %}
-            <div class="card text-white text-center bg-dark mx-5">
+            <div class="card text-white text-center bg-dark mx-5" data-id="{{ server.id }}">
                 <div class="card-header">{{ server.name }}</div>
                 <div class="card-body text-white">
                     <h5 class="text-info">Piste</h5>
-                    <p class="card-text" data-addon="{{ server.track.addon }}">{{ server.track.name }}</p>
+                    <p class="card-text" id="serverTrack{{ server.id }}" data-addon="{{ server.track.addon }}">{{ server.track.name }}</p>
                     <h5 class="text-info">Voitures</h5>
                     {% for car in server.cars.all %}
-                    <P class="card-text">{{ car.name }}</P>
+                    <P class="card-text vehicle{{ server.id }}" data-car-id="{{ car.id }}" data-addon="{{ car.addon }}">{{ car.name }}</P>
                     {% endfor %}
                 </div>
-                <div class="card-footer">
-                    {% if server.track.addon == True %}
-                    <button type="button" class="btn btn-info">Télécharger le pack</button>
-                    {% else %}
-                    <h6><strong class="text-info">Inclus de base dans le jeu</strong></h5>
-                    {% endif %}
-                </div>
+                <div class="card-footer"></div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+
 {% endblock content %}
+{% block modal %}
+
+<div class="modal fade" id="modalSuccessDl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" id="modalHeaderDl">
+                <h5 class="modal-title mr-3">Téléchargement en cours</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-secondary text-white" id="modalBodyDl">
+                <p>Merci d'avoir choisi notre serveur et bon jeu !</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock modal %}
 {% block script %}
+
+<script src="{% static 'acserver/js/secureajax.js' %}"></script>
+<script src="{% static 'acserver/js/activebutton.js' %}"></script>
+
 {% endblock script %}

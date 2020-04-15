@@ -17,9 +17,3 @@ class Server(models.Model):
     path_upload = models.CharField(max_length=500)
     cars = models.ManyToManyField(Car)
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
-
-    def listing_cars(self):
-        cars = []
-        for car in self.cars.split(' '):
-            cars.append(car.replace('_', ' '))
-        return cars
