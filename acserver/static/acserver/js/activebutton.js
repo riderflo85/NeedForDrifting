@@ -1,30 +1,3 @@
-function downloadPack() {
-    let csrftoken = getCookie('csrftoken');
-
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
-
-    $.ajax({
-        url: '/download',
-        type: 'POST',
-        dataType: 'json',
-        data: {'id_server': this.getAttribute('data-server-id')},
-        success: function (data) {
-            if (data['success'] === true) {
-                $('#modalSuccessDl').modal();
-            }
-        },
-        error: function (err) {
-            console.warn(err);
-        }
-    });
-}
-
 function activeButton(listServCard) {
     for (const server of listServCard) {
         // defined if the button is to be actived or not
@@ -40,9 +13,9 @@ function activeButton(listServCard) {
             }
         }
         if (customCar == true || customCar == true) {
-            let baliseBtn = `<button type='button' class='btn btn-info' id="dlPackServ${serverId}" data-server-id='${serverId}'>Télécharger le pack</button>`;
+            let baliseBtn = `<a href='/download/${serverId}' type='button' class='btn btn-info' id="dlPackServ${serverId}" data-server-id='${serverId}' download>Télécharger le pack</a>`;
             $(baliseBtn).appendTo($(server.children[2]));
-            document.getElementById(`dlPackServ${serverId}`).addEventListener('click', downloadPack);
+            document.getElementById(`dlPackServ${serverId}`).addEventListener('click', function() {$('#modalSuccessDl').modal();});
         } else {
             let baliseInfo = "<h6><strong class='text-info'>Inclus de base dans le jeu</strong></h5>";
             $(baliseInfo).appendTo($(server.children[2]));

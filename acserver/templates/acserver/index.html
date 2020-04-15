@@ -58,6 +58,7 @@
                     {% for car in server.cars.all %}
                     <P class="card-text vehicle{{ server.id }}" data-car-id="{{ car.id }}" data-addon="{{ car.addon }}">{{ car.name }}</P>
                     {% endfor %}
+                    {% csrf_token %}
                 </div>
                 <div class="card-footer"></div>
             </div>
