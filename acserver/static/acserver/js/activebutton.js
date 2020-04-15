@@ -16,8 +16,6 @@ function downloadPack() {
         data: {'id_server': this.getAttribute('data-server-id')},
         success: function (data) {
             if (data['success'] === true) {
-                $("<div class='spinner-border text-info' role='status'><span class='sr-only'>Loading...</span></div>").appendTo('#modalHeaderDl');
-                $("<iframe src='https://giphy.com/embed/GD5xkDtFPUpY4' width='480' height='165' rameBorder='0' class='giphy-embed' allowFullScreen></iframe>").appendTo('#modalBodyDl');
                 $('#modalSuccessDl').modal();
             }
         },
