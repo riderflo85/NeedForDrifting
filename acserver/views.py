@@ -12,8 +12,16 @@ def index(request):
 def download(request, id_server):
     server = get_object_or_404(Server, id=id_server)
     zip_name = f"{server.name.replace(' ', '_')}.zip"
-    os.system(f"cd {server.path_upload} && zip -r {zip_name} cars tracks")
     file_path = server.path_upload + zip_name
+
+    if zip_name not in os.listdir(server.path_upload):
+        os.system(f"cd {server.path_upload} && zip -r {zip_name} cars tracks")
+
     zip_file = open(file_path, 'rb')
-    res = FileResponse(zip_file, as_attachment=True, content_type="application/zip")
+
+    res = FileResponse(
+        zip_file,
+        as_attachment=True,
+        content_type="application/zip"
+    )
     return res
