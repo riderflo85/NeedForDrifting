@@ -1,9 +1,21 @@
+.account {
+    color: rgba(255,255,255,.5)
+}
+
+.account:hover {
+    color: rgba(255,255,255,.75)
+}
+
 .margin-form-login{
     margin-top: 20vh;
 }
 
 .title-form{
     margin-bottom: 4vh;
+}
+
+.title-manager{
+    margin-bottom: 10vh;
 }
 
 .card {
@@ -16,4 +28,20 @@
 
 .fav-icon-bg {
     color: #17a2b8 !important;
+}
+
+.text-color {
+    color: #339933;
+}
+
+.btn-manager {
+    width: 70%;
+    height: 10rem;
+    font-size: 1.3rem !important;
+    border: 0px solid;
+    border-radius: 40px !important;
+}
+
+.btn-manager:hover {
+    font-size: 1.4rem !important;
 }

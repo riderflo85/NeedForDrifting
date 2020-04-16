@@ -37,13 +37,21 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'manageserver:login' %}">Upload <i class="fas fa-upload"></i></a>
+                    <a class="nav-link" href="#">Upload <i class="fas fa-upload"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'manageserver:manager' %}">Gestion serveur <i class="fas fa-server"></i></a>
                 </li>
             </ul>
+            <a class="nav-link account" href="{% url 'manageserver:logout' %}">disconnect <i class="fas fa-sign-out-alt"></i></a>
+            {% else %}
+            <a class="nav-link account" href="{% url 'manageserver:login' %}">Connexion <i class="fas fa-user-alt"></i></a>
+            {% endif %}
         </div>
     </nav>
 

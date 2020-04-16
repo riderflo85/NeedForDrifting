@@ -6,6 +6,7 @@ from .forms import LoginForm
 
 app_name = 'manageserver'
 urlpatterns = [
+    path('', views.manager, name="manager"),
     path(
         'login/',
         auth_views.LoginView.as_view(
