@@ -1,0 +1,19 @@
+.margin-form-login{
+    margin-top: 20vh;
+}
+
+.title-form{
+    margin-bottom: 4vh;
+}
+
+.card {
+    border: 3px solid #242629 !important;
+}
+
+.card-border {
+    border-radius: 30px !important;
+}
+
+.fav-icon-bg {
+    color: #17a2b8 !important;
+}

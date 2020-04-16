@@ -1,0 +1,56 @@
+{% extends 'acserver/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid margin-form-login">
+    <div class="row align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-center title-form">
+            <h1 class="text-white">Connectez vous afin de gérer vos serveurs</h1>
+        </div>
+
+        <div class="col-lg-3 align-self-baseline">
+            <div class="card card-border bg-secondary" id="field-login">
+                <div class="card-body card-border">
+                    {% if form.errors %}
+                    <h3 class="text-warning">Utilisateur incorrect ou mot de passe invalide</h3>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                    <h3 class="text-white">Vous êtes connectez {{ user.username }}!</h3>
+                    {% else %}
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend fav-icon-bg">
+                                <span class="input-group-text fav-icon-bg"><i class="fas fa-user"></i></span>
+                            </div>
+                            {{ form.username }}
+                        </div><!-- end .input-group form-group -->
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend fav-icon-bg">
+                                <span class="input-group-text fav-icon-bg"><i class="fas fa-key"></i></span>
+                            </div>
+                            {{ form.password }}
+                        </div><!-- end .input-group form-group -->
+                        <div class="form-group">
+                            <input type="submit" value="Se connecter" class="btn btn-info float-right">
+                            <input type="hidden" name="next" value="{{ next }}">
+                        </div>
+                    </form><!-- end form -->
+                    {% endif %}
+                    
+                </div><!-- end .card-body -->
+            </div><!-- end .card -->
+        </div><!-- end .col-lg-8 align-self-baseline -->
+
+    </div><!-- end .row align-items-center... -->
+</div><!-- end .container -->
+
+{% endblock content %}
+
+{% block script %}
+
+<script src="{% static 'manageserver/js/script.js' %}"></script>
+
+{% endblock script %}

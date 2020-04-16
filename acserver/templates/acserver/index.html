@@ -1,5 +1,13 @@
 {% extends 'acserver/base.html' %}
 {% load static %}
+
+{% block loading %}
+
+    <div id="container-msg">
+        <div class="text-welcome"></div>
+    </div>
+
+{% endblock loading %}
 {% block collapse %}
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -114,6 +122,8 @@
 {% endblock modal %}
 {% block script %}
 
+<script src="{% static 'acserver/js/script.js' %}"></script>
+<script src="{% static 'acserver/js/textscramble.js' %}"></script>
 <script src="{% static 'acserver/js/secureajax.js' %}"></script>
 <script src="{% static 'acserver/js/activebutton.js' %}"></script>
 

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeedForDrifting</title>
     {% load static %}
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/276083751887306763/699261855570591795/382-3825120_assetto-corsa-competizione-logo.png" width="40px" height="40px">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/276083751887306763/700345466755219536/ndf_logo2.png" width="40px" height="40px">
 
     <link rel="stylesheet" href="{% static 'acserver/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'manageserver/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'acserver/css/loading.css' %}">
     <link rel="stylesheet" href="{% static 'acserver/css/message.css' %}">
 
@@ -24,39 +25,34 @@
         <div id="loader"></div>
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
-        <div id="container-msg">
-            <div class="text-welcome"></div>
-        </div>
-        
+        {% block loading %}
+        {% endblock loading %}
     </div>
 
     <nav id="navBar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="https://cdn.discordapp.com/attachments/276083751887306763/699261855570591795/382-3825120_assetto-corsa-competizione-logo.png" width="40px" height="40px" alt="logo">
+        <a class="navbar-brand" href="/">
+            <img src="https://cdn.discordapp.com/attachments/276083751887306763/700345466755219536/ndf_logo2.png" width="40px" height="40px" alt="logo">
         </a>
-        <a class="navbar-brand" href="#">NeedForDrifting</a>
+        <a class="navbar-brand" href="/">NeedForDrifting</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item mx-5">
-                    <a class="nav-link" href="#">Télécharger le pack de voiture <i class="fas fa-car"></i></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Upload <i class="fas fa-upload"></i></a>
+                    <a class="nav-link" href="{% url 'manageserver:login' %}">Upload <i class="fas fa-upload"></i></a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    
-
     {% block collapse %}
     {% endblock collapse %}
+
     {% block content %}
     {% endblock content %}
+
     {% block modal %}
     {% endblock modal %}
 
@@ -67,8 +63,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
 
-    <script src="{% static 'acserver/js/script.js' %}"></script>
-    <script src="{% static 'acserver/js/textscramble.js' %}"></script>
     {% block script %}
     {% endblock script %}
 </body>
