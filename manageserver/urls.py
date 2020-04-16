@@ -20,4 +20,5 @@ urlpatterns = [
         auth_views.LogoutView.as_view(template_name='acserver/index.html'),
         name="logout"
     ),
+    path('upload/', views.upload, name="upload"),
 ]

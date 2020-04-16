@@ -1,0 +1,41 @@
+{% extends 'acserver/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid margin-form-login">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-lg-6 align-self-center text-white">
+            <div class="card card-border bg-secondary">
+                <div class="card-body card-border">
+                    <form>
+                        <div class="form-group">
+                            <label for="select-server">Choisissez le serveur de destination</label>
+                            <select class="form-control" id="selectServer">
+                                <option disabled>1</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label mr-5" for="exampleCheck1">Voiture</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Circuit</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Déposer votre archive .zip</label>
+                            <input type="file" class="form-control-file" id="filePack">
+                        </div>
+                        <button type="submit" class="btn btn-info">Valider</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+{% block script %}
+
+<script src="{% static 'manageserver/js/script.js' %}"></script>
+
+{% endblock script %}
