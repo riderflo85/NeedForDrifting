@@ -6,29 +6,26 @@
     <div class="row align-items-center justify-content-center">
         <div class="col-12 col-lg-6 align-self-center text-white">
             <div class="card card-border bg-secondary">
-                <div class="card-body card-border">
-                    <form>
+                <div class="card-header text-white text-center">
+                    <h3>Ajouter des voitures ou des pistes</h3>
+                </div>
+                <form method="post" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body card-border">
                         <div class="form-group">
                             <label for="select-server">Choisissez le serveur de destination</label>
-                            <select class="form-control" id="selectServer">
-                                <option disabled>1</option>
-                            </select>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label mr-5" for="exampleCheck1">Voiture</label>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Circuit</label>
+                            {{ form_car.all_servers }}
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Déposer votre archive .zip</label>
-                            <input type="file" class="form-control-file" id="filePack">
+                            <label for="filePack">Déposer votre archive <strong class="text-warning">cars.zip </strong><strong class="text-danger">OU </strong><strong class="text-warning">track.zip</strong></label>
+                            {{ form_car.file }}
                         </div>
+                    </div>
+                    <div class="card-footer text-right">
                         <button type="submit" class="btn btn-info">Valider</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-            
         </div>
     </div>
 </div>
