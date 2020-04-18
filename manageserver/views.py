@@ -7,11 +7,13 @@ from .utils import unzip_pack, read_server_cfg
 
 @login_required
 def manager(request):
+    request.session.set_expiry(0)
     context = {"servers": Server.objects.all()}
     return render(request, 'manageserver/task.html', context)
 
 @login_required
 def upload(request):
+    request.session.set_expiry(0)
     context = {}
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
