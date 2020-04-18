@@ -1,5 +1,5 @@
 textarea {
-    /* display: none; */
+    display: none;
     color: #e6e1dc;
     background-color: #232323;
     border: 0;
@@ -92,4 +92,11 @@ textarea:focus {
 
 .bg-preview {
     background-color: #232323;
+}
+
+.bg-header {
+    background-color: #2F343F !important;
+    color: #e6e1dc !important;
+    border: 3px solid #2F343F !important;
+    border-radius: 10px;
 }

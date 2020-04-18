@@ -37,6 +37,7 @@ def edit_cfg(request, id_server):
     context = {}
     server = Server.objects.get(pk=id_server)
     context['file_cfg'] = read_server_cfg(server.file_cfg)
+    context['server_name'] = server.name
     return render(request, 'manageserver/editcfg.html', context)
 
 @login_required
@@ -44,4 +45,5 @@ def edit_car_list(request, id_server):
     context = {}
     server = Server.objects.get(pk=id_server)
     context['file_car_list'] = read_server_cfg(server.file_entry_list)
+    context['server_name'] = server.name
     return render(request, 'manageserver/editcarlist.html', context)

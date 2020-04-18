@@ -2,20 +2,20 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-12">
-            <div class="card mx-auto card-editor">
-                <div class="card-header">
-                    <h3>Editeur</h3>
+            <div class="card mx-auto card-editor bg-header">
+                <div class="card-header bg-header d-flex justify-content-between">
+                    <h3>{{ server_name }}</h3>
                     <div>
-                        <button class="btn btn-primary">Modifier</button>
-                        <button class="btn btn-primary">Savegarder</button>
-                        <button class="btn btn-primary">Annuler</button>
+                        <button class="btn btn-primary" id="btnEdit"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-success" style="display: none;" id="btnSave"><i class="fas fa-save"></i></button>
+                        <button class="btn btn-danger" style="display: none;" id="btnCancel"><i class="fas fa-window-close"></i></button>
                     </div>
                 </div>
                 <div class="card-body bg-preview pr-0 pl-1">
-                    <pre class="preview m-0 d-none">
+                    <pre class="preview m-0" id="prePreview">
                         <code class="ini,toml" id="preview">
 {{ file_cfg }}
                         </code>
@@ -33,5 +33,6 @@
 {% block script %}
 <script src="{% static 'manageserver/js/script.js' %}"></script>
 <script src="{% static 'manageserver/js/highlight.pack.js' %}"></script>
+<script src="{% static 'manageserver/js/editor.js' %}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {% endblock script %}
