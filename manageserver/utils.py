@@ -20,3 +20,6 @@ def unzip_pack(file, server):
         return True
     else:
         return False
+
+def read_server_cfg():
+    pass

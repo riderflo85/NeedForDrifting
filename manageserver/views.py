@@ -7,7 +7,8 @@ from .utils import unzip_pack
 
 @login_required
 def manager(request):
-    return render(request, 'manageserver/task.html')
+    context = {"servers": Server.objects.all()}
+    return render(request, 'manageserver/task.html', context)
 
 @login_required
 def upload(request):
@@ -30,3 +31,11 @@ def upload(request):
         # context['form_track'] = form_track
 
     return render(request, 'manageserver/addcontent.html', context)
+
+@login_required
+def edit_cfg(request, id_server):
+    return render(request, 'manageserver/editcfg.html')
+
+@login_required
+def edit_car_list(request, id_server):
+    return render(request, 'manageserver/editcarlist.html')

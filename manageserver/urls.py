@@ -7,6 +7,8 @@ from .forms import LoginForm
 app_name = 'manageserver'
 urlpatterns = [
     path('', views.manager, name="manager"),
+    path('editcfg/<int:id_server>', views.edit_cfg, name="editcfg"),
+    path('editcarlist/<int:id_server>', views.edit_car_list, name="editcarlist"),
     path(
         'login/',
         auth_views.LoginView.as_view(

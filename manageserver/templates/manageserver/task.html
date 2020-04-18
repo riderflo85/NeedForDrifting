@@ -8,13 +8,27 @@
             <h1 class="text-white">Bienvenu <strong class="text-color">{{ user.username }}</strong> !</h1>
         </div>
         <div class="col-lg-4 align-self-baseline box-manager">
-            <a href="{% url 'manageserver:upload' %}" type="button" class="btn btn-primary btn-manager">Ajouter du contenu sur un serveur</a>
+            <a href="{% url 'manageserver:upload' %}" type="button" class="btn btn-primary a-manager">Ajouter du contenu sur un serveur</a>
         </div>
         <div class="col-lg-4 align-self-baseline box-manager">
-            <a href="#" type="button" class="btn btn-info btn-manager">Modifier les paramètres d'un serveur</a>
+            <button type="button" class="btn btn-info btn-manager" id="editCfg">Modifier les paramètres d'un serveur</button>
+            <div id="divEditCfg" data-display="hidden" style="display: none;">
+                <ul class="list-group">
+                    {% for server in servers %}
+                    <li class="list-group-item"><a href="{% url 'manageserver:editcfg' server.id %}" class="btn btn-info">{{ server.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class="col-lg-4 align-self-baseline box-manager">
-            <a href="#" type="button" class="btn btn-success btn-manager">Modifier la liste des voitures d'un serveur</a>
+            <button type="button" class="btn btn-success btn-manager" id="editCarList">Modifier la liste des voitures d'un serveur</button>
+            <div id="divEditCarList" data-display="hidden" style="display: none;">
+                <ul class="list-group">
+                    {% for server in servers %}
+                    <li class="list-group-item"><a href="{% url 'manageserver:editcarlist' server.id %}" class="btn btn-success">{{ server.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -23,5 +37,6 @@
 {% block script %}
 
 <script src="{% static 'manageserver/js/script.js' %}"></script>
+<script src="{% static 'manageserver/js/btncfg.js' %}"></script>
 
 {% endblock script %}
