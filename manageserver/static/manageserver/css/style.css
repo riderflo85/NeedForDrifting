@@ -1,3 +1,14 @@
+textarea {
+    /* display: none; */
+    color: #e6e1dc;
+    background-color: #232323;
+    border: 0;
+}
+
+textarea:focus {
+    outline: none;
+}
+
 .account {
     color: rgba(255,255,255,.5)
 }
@@ -62,4 +73,23 @@
 .list-group-item {
     background-color: transparent !important;
     border: 0 !important;
+}
+
+.card-editor {
+    width: 50%;
+    height: 81vh;
+}
+
+.preview {
+    width: 99%;
+    height: 70vh;
+}
+
+.editor {
+    width: 100%;
+    height: 100%;
+}
+
+.bg-preview {
+    background-color: #232323;
 }

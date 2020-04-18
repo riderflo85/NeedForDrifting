@@ -1,192 +1,34 @@
 {% extends 'acserver/base.html' %}
 {% load static %}
 {% block content %}
-<pre>
-    <code class="ini,toml">
-[CAR_0]
-MODEL=bmw_m3_e30_drift
-SKIN=DGFX_Vinyl
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
 
-[CAR_1]
-MODEL=bmw_m3_e30_drift
-SKIN=DGFX_Vinyl
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mx-auto card-editor">
+                <div class="card-header">
+                    <h3>Editeur</h3>
+                    <div>
+                        <button class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-primary">Savegarder</button>
+                        <button class="btn btn-primary">Annuler</button>
+                    </div>
+                </div>
+                <div class="card-body bg-preview pr-0 pl-1">
+                    <pre class="preview m-0 d-none">
+                        <code class="ini,toml" id="preview">
+{{ file_car_list }}
+                        </code>
+                    </pre>
+                    <textarea class="editor" name="config" id="editor" spellcheck="false">
+{{ file_car_list }}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-[CAR_2]
-MODEL=bmw_m3_e30_drift
-SKIN=Falken
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_3]
-MODEL=bmw_m3_e30_drift
-SKIN=Falken
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_4]
-MODEL=bmw_m3_e30_drift
-SKIN=JTC_Drift
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_5]
-MODEL=bmw_m3_e30_drift
-SKIN=JTC_Drift
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_6]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_Red
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_7]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_Red
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_8]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_White
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_9]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_White
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-    </code>
-</pre>
-<pre class="d-none">
-    <textarea name="config" id="config" cols="60" rows="50">
-[CAR_0]
-MODEL=bmw_m3_e30_drift
-SKIN=DGFX_Vinyl
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_1]
-MODEL=bmw_m3_e30_drift
-SKIN=DGFX_Vinyl
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_2]
-MODEL=bmw_m3_e30_drift
-SKIN=Falken
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_3]
-MODEL=bmw_m3_e30_drift
-SKIN=Falken
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_4]
-MODEL=bmw_m3_e30_drift
-SKIN=JTC_Drift
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_5]
-MODEL=bmw_m3_e30_drift
-SKIN=JTC_Drift
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_6]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_Red
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_7]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_Red
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_8]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_White
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-
-[CAR_9]
-MODEL=bmw_m3_e30_drift
-SKIN=Nitto_White
-SPECTATOR_MODE=0
-DRIVERNAME=
-TEAM=
-GUID=
-BALLAST=0
-    </textarea>
-</pre>
 {% endblock content %}
 {% block script %}
 <script src="{% static 'manageserver/js/script.js' %}"></script>

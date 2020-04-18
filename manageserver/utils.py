@@ -21,5 +21,8 @@ def unzip_pack(file, server):
     else:
         return False
 
-def read_server_cfg():
-    pass
+def read_server_cfg(path_file):
+    content_file = ""
+    with open(path_file, 'r') as file:
+        content_file = file.read()
+    return content_file

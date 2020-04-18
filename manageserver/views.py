@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from acserver.models import Server
 from .forms import UploadFileForm
-from .utils import unzip_pack
+from .utils import unzip_pack, read_server_cfg
 
 
 @login_required
@@ -34,8 +34,14 @@ def upload(request):
 
 @login_required
 def edit_cfg(request, id_server):
-    return render(request, 'manageserver/editcfg.html')
+    context = {}
+    server = Server.objects.get(pk=id_server)
+    context['file_cfg'] = read_server_cfg(server.file_cfg)
+    return render(request, 'manageserver/editcfg.html', context)
 
 @login_required
 def edit_car_list(request, id_server):
-    return render(request, 'manageserver/editcarlist.html')
+    context = {}
+    server = Server.objects.get(pk=id_server)
+    context['file_car_list'] = read_server_cfg(server.file_entry_list)
+    return render(request, 'manageserver/editcarlist.html', context)
