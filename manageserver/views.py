@@ -1,8 +1,9 @@
 from django.shortcuts import render, reverse, redirect
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from acserver.models import Server
 from .forms import UploadFileForm
-from .utils import unzip_pack, read_server_cfg
+from .utils import unzip_pack, read_server_cfg, write_server_cfg
 
 
 @login_required
@@ -36,16 +37,37 @@ def upload(request):
 
 @login_required
 def edit_cfg(request, id_server):
-    context = {}
     server = Server.objects.get(pk=id_server)
-    context['file_cfg'] = read_server_cfg(server.file_cfg)
-    context['server_name'] = server.name
-    return render(request, 'manageserver/editcfg.html', context)
+
+    if request.method == 'POST':
+        new_config = request.POST['new_config']
+
+        if write_server_cfg(server.file_cfg, new_config):
+            return JsonResponse({'status': 'updated'})
+        else:
+            return JsonResponse({'status': 'not-updated'})        
+
+    else:
+        context = {}
+        
+        context['file_cfg'] = read_server_cfg(server.file_cfg)
+        context['server_name'] = server.name
+        return render(request, 'manageserver/editcfg.html', context)
 
 @login_required
 def edit_car_list(request, id_server):
-    context = {}
     server = Server.objects.get(pk=id_server)
-    context['file_car_list'] = read_server_cfg(server.file_entry_list)
-    context['server_name'] = server.name
-    return render(request, 'manageserver/editcarlist.html', context)
+
+    if request.method == 'POST':
+        new_config = request.POST['new_config']
+
+        if write_server_cfg(server.file_entry_list, new_config):
+            return JsonResponse({'status': 'updated'})
+        else:
+            return JsonResponse({'status': 'not-updated'})
+
+    else:
+        context = {}
+        context['file_car_list'] = read_server_cfg(server.file_entry_list)
+        context['server_name'] = server.name
+        return render(request, 'manageserver/editcarlist.html', context)

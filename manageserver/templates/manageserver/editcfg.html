@@ -8,6 +8,21 @@
             <div class="card mx-auto card-editor bg-header">
                 <div class="card-header bg-header d-flex justify-content-between">
                     <h3>{{ server_name }}</h3>
+                    <h4 class="text-light" id="saving" style="display: none;">
+                        <span class="spinner-grow text-info" role="status"></span>
+                         Sauvegarde sur le serveur en cours 
+                        <span class="spinner-grow text-info" role="status"></span>
+                    </h4>
+                    <h4 class="text-light" id="savingSuccess" style="display: none;">
+                        <span class="spinner-grow text-success" role="status"></span>
+                         Sauvegarde réussite 
+                        <span class="spinner-grow text-success" role="status"></span>
+                    </h4>
+                    <h4 class="text-light" id="savingFailed" style="display: none;">
+                        <span class="spinner-grow text-danger" role="status"></span>
+                         Échec de la sauvegarde 
+                        <span class="spinner-grow text-danger" role="status"></span>
+                    </h4>
                     <div>
                         <button class="btn btn-primary" id="btnEdit"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-success" style="display: none;" id="btnSave"><i class="fas fa-save"></i></button>
@@ -31,6 +46,7 @@
 
 {% endblock content %}
 {% block script %}
+<script src="{% static 'manageserver/js/secureajax.js' %}"></script>
 <script src="{% static 'manageserver/js/script.js' %}"></script>
 <script src="{% static 'manageserver/js/highlight.pack.js' %}"></script>
 <script src="{% static 'manageserver/js/editor.js' %}"></script>
