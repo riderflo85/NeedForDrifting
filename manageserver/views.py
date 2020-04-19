@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from acserver.models import Server
 from .forms import UploadFileForm
-from .utils import unzip_pack, read_server_cfg, write_server_cfg
+from .utils import unzip_pack, read_server_cfg, write_server_cfg, exec_command
 
 
 @login_required
@@ -71,3 +71,14 @@ def edit_car_list(request, id_server):
         context['file_car_list'] = read_server_cfg(server.file_entry_list)
         context['server_name'] = server.name
         return render(request, 'manageserver/editcarlist.html', context)
+
+@login_required
+def run_reboot_stop_server(request, id_server, cmd):
+    server = Server.objects.get(pk=id_server)
+
+    result = exec_command(server, cmd)
+    print(server.name_cmd+' '+cmd+' res cmd '+str(result))
+    if result['check']:
+        return JsonResponse({"error": False, "status_cmd": result['res']})
+    else:
+        return JsonResponse({"error": True})

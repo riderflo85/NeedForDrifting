@@ -19,3 +19,5 @@ class Server(models.Model):
     file_entry_list = models.CharField(max_length=500)
     cars = models.ManyToManyField(Car)
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
+    status = models.CharField(max_length=11)
+    name_cmd = models.CharField(max_length=16)

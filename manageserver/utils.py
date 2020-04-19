@@ -1,4 +1,5 @@
 import os
+import subprocess
 from acserver.models import Server
 
 
@@ -45,3 +46,21 @@ def write_server_cfg(path_file, content):
 
     except:
         return False
+
+def exec_command(server, cmd):
+    try:
+        res = subprocess.check_output(["./acManager.sh",server.name_cmd,cmd])
+        res = res.decode('utf-8').replace('\n', '')
+
+        if res == "run":
+            server.status = "running"
+        elif res == "kill":
+            server.status = "stoping"
+        else:
+            server.status = res
+        
+        server.save()
+
+        return {"check": True, "res": res}
+    except:
+        return {"check": False}

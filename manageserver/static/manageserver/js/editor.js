@@ -57,7 +57,7 @@ function sendConfig(data) {
                     });
                 }
             },
-            errror: function (err) {
+            error: function (err) {
                 console.warn(err);
             },
         });

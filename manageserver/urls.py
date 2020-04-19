@@ -10,6 +10,11 @@ urlpatterns = [
     path('editcfg/<int:id_server>', views.edit_cfg, name="editcfg"),
     path('editcarlist/<int:id_server>', views.edit_car_list, name="editcarlist"),
     path(
+        'command/<int:id_server>/<str:cmd>',
+        views.run_reboot_stop_server,
+        name="command"
+    ),
+    path(
         'login/',
         auth_views.LoginView.as_view(
             template_name='manageserver/login.html',

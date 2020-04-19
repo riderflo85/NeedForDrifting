@@ -17,8 +17,12 @@ textarea:focus {
     color: rgba(255,255,255,.75)
 }
 
-.margin-form-login{
+.margin-form-login {
     margin-top: 20vh;
+}
+
+.margin-manager-server {
+    margin-top: 2vh;
 }
 
 .title-form{
@@ -99,4 +103,33 @@ textarea:focus {
     color: #e6e1dc !important;
     border: 3px solid #2F343F !important;
     border-radius: 10px;
+}
+
+.servers-stat {
+    margin-top: 12vh;
+}
+
+.server-action {
+    background-color: #2F343F !important;
+    color: #e6e1dc;
+    width: 20rem;
+}
+
+.point-status {
+    height: 20px;
+    width: 20px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.status-running {
+    background-color: #28a745;
+}
+
+.status-stoping {
+    background-color: #dc3545;
+}
+
+.status-reboot {
+    background-color: #ffc107;
 }
