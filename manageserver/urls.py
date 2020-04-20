@@ -28,4 +28,5 @@ urlpatterns = [
         name="logout"
     ),
     path('upload/', views.upload, name="upload"),
+    path('update_database/', views.update_database, name="updatedb"),
 ]

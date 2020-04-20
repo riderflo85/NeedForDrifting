@@ -18,7 +18,7 @@ textarea:focus {
 }
 
 .margin-form-login {
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 
 .margin-manager-server {
@@ -132,4 +132,41 @@ textarea:focus {
 
 .status-reboot {
     background-color: #ffc107;
+}
+
+.custom-control-label { /* added for alignment with the switch */
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    padding-bottom: 0.1rem;
+}
+
+.custom-switch .custom-control-label::before {
+    left: -2.25rem !important;
+    height: 2rem;
+    width: 3.5rem !important;    /* it was 1.75rem before. Sliding way is longer than before. */
+    pointer-events: all !important;
+    border-radius: 1rem !important;
+}
+
+.custom-switch .custom-control-label::after {
+    top: calc(0.25rem + 2px);
+    left: calc(-2.25rem + 2px);
+    width: calc(2rem - 4px) !important;   /* it was calc(1rem - 4px) before. Oval is bigger than before. */
+    height: calc(2rem - 4px) !important;  /* it was calc(1rem - 4px) before. Oval is bigger than before. */
+    background-color: #adb5bd;
+    border-radius: 2rem !important; /*   it was 0.5rem before. Oval is bigger than before. */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .custom-switch .custom-control-label::after {
+        transition: none;
+    }
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+    background-color: #fff;
+    -webkit-transform: translateX(1.5rem) !important; /*translateX(0.75rem); */
+    transform: translateX(1.5rem) !important; /*translateX(0.75rem); */
 }

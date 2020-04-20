@@ -45,13 +45,14 @@
                     <div class="point-status status-stoping align-self-center" id="roundStat{{ server.pk }}"></div>
                     {% endif %}
                 </div>
-                <div class="card-body" id="bodyBtn{{ server.pk }}">
+                <div class="card-body text-center align-items-center" id="bodyBtn{{ server.pk }}">
                     <div class="d-flex justify-content-around" id="groupBtnAction{{ server.pk }}">
                         <button class="btn btn-info" id="statusServ{{ server.pk }}" data-cmd="status" data-toggle="tooltip" data-placement="left" title="Rechargement du status"><i class="fas fa-info-circle"></i></button>
                         <button class="btn btn-success" id="runServ{{ server.pk }}" data-cmd="start"><i class="fas fa-play"></i></button>
                         <button class="btn btn-warning" id="rebootServ{{ server.pk }}" data-cmd="restart"><i class="fas fa-sync-alt"></i></button>
                         <button class="btn btn-danger" id="stopServ{{ server.pk }}" data-cmd="stop"><i class="fas fa-power-off"></i></button>
                     </div>
+                    <button class="btn btn-primary mt-3" id="updatePack{{ server.pk }}">Mettre à jour le pack</button>
                 </div>
             </div>
             {% endfor %}

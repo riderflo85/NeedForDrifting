@@ -1,8 +1,8 @@
 from django.shortcuts import render, reverse, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from acserver.models import Server
-from .forms import UploadFileForm
+from acserver.models import Server, Car, Track
+from .forms import UploadFileForm, UpdateCarForm, UpdateTrackForm
 from .utils import unzip_pack, read_server_cfg, write_server_cfg, exec_command
 
 
@@ -28,15 +28,53 @@ def upload(request):
             context['errors'] = form.errors.items()
 
     else:
-        form_car = UploadFileForm()
-        form_track = UploadFileForm()
+        form = UploadFileForm()
+        form_car = UpdateCarForm()
+        form_track = UpdateTrackForm()
+        context['form'] = form
         context['form_car'] = form_car
-        # context['form_track'] = form_track
+        context['form_track'] = form_track
 
     return render(request, 'manageserver/addcontent.html', context)
 
 @login_required
+def update_database(request):
+    if request.method == "POST":
+        if request.POST['form_identifiant'] == 'car':
+            car = Car()
+            form = UpdateCarForm(request.POST)
+            if form.is_valid():
+                car_name = form.cleaned_data['name_car']
+                car_folder = form.cleaned_data['name_folder']
+                if 'is_car_addon' in request.POST.keys():
+                    addon = True
+                else:
+                    addon = False
+                car.name = car_name
+                car.folder_name = car_folder
+                car.addon = addon
+                car.save()
+
+        elif request.POST['form_identifiant'] == 'track':
+            track = Track()
+            form = UpdateTrackForm(request.POST)
+            if form.is_valid():
+                track_name = form.cleaned_data['name_track']
+                track_folder = form.cleaned_data['name_folder']
+                if 'is_track_addon' in request.POST.keys():
+                    addon = True
+                else:
+                    addon = False
+                track.name = track_name
+                track.folder_name = track_folder
+                track.addon = addon
+                track.save()
+
+        return redirect(reverse('manageserver:upload'))
+
+@login_required
 def edit_cfg(request, id_server):
+    request.session.set_expiry(0)
     server = Server.objects.get(pk=id_server)
 
     if request.method == 'POST':
@@ -56,6 +94,7 @@ def edit_cfg(request, id_server):
 
 @login_required
 def edit_car_list(request, id_server):
+    request.session.set_expiry(0)
     server = Server.objects.get(pk=id_server)
 
     if request.method == 'POST':

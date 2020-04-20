@@ -3,11 +3,13 @@ from django.db import models
 
 class Track(models.Model):
     name = models.CharField(max_length=200, unique=True)
+    folder_name = models.CharField(max_length=200)
     addon = models.BooleanField(default=True, null=False)
 
 
 class Car(models.Model):
     name = models.CharField(max_length=200, unique=True)
+    folder_name = models.CharField(max_length=200)
     addon = models.BooleanField(default=True, null=False)
 
 

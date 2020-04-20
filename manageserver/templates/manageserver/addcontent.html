@@ -7,18 +7,93 @@
         <div class="col-12 col-lg-6 align-self-center text-white">
             <div class="card card-border bg-secondary">
                 <div class="card-header text-white text-center">
-                    <h3>Ajouter des voitures ou des pistes</h3>
+                    <h3>Ajouter des voitures ou des pistes sur le serveur</h3>
                 </div>
                 <form method="post" action="." enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="card-body card-border">
                         <div class="form-group">
                             <label for="select-server">Choisissez le serveur de destination</label>
-                            {{ form_car.all_servers }}
+                            {{ form.all_servers }}
                         </div>
                         <div class="form-group">
                             <label for="filePack">Déposer votre archive <strong class="text-warning">cars.zip </strong><strong class="text-danger">OU </strong><strong class="text-warning">track.zip</strong></label>
-                            {{ form_car.file }}
+                            {{ form.file }}
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-info">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-lg-4 align-self-center text-white">
+            <div class="card card-border bg-secondary">
+                <div class="card-header text-white text-center">
+                    <h3>Ajouter des voitures dans la base de données</h3>
+                </div>
+                <form method="post" action="{% url 'manageserver:updatedb' %}">
+                    {% csrf_token %}
+                    <div class="card-body card-border">
+                        {{ form_car.form_identifiant }}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Nom du véhicule</div>
+                            </div>
+                            {{ form_car.name_car }}
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Nom du dossier</div>
+                            </div>
+                            {{ form_car.name_folder }}
+                        </div>
+                        <div class="form-group d-flex align-items-center">
+                            <h5 class="pt-3 pl-2 m-0">Addon</h5>
+                            <div class="custom-control custom-switch ml-3">
+                                {{ form_car.is_car_addon }}
+                                <label class="custom-control-label" for="id_is_car_addon"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-info">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 offset-lg-1 align-self-center text-white">
+            <div class="card card-border bg-secondary">
+                <div class="card-header text-white text-center">
+                    <h3>Ajouter des pistes dans la base de données</h3>
+                </div>
+                <form method="post" action="{% url 'manageserver:updatedb' %}">
+                    {% csrf_token %}
+                    <div class="card-body card-border">
+                        {{ form_track.form_identifiant }}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Nom de la piste</div>
+                            </div>
+                            {{ form_track.name_track }}
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Nom du dossier</div>
+                            </div>
+                            {{ form_track.name_folder }}
+                        </div>
+                        <div class="form-group d-flex align-items-center">
+                            <h5 class="pt-3 pl-2 m-0">Addon</h5>
+                            <div class="custom-control custom-switch ml-3">
+                                {{ form_track.is_track_addon }}
+                                <label class="custom-control-label" for="id_is_track_addon"></label>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer text-right">

@@ -3,7 +3,7 @@ from django.utils.functional import lazy
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django import forms
-from acserver.listing_server import list_all_servers
+from acserver.listing_server import list_all_servers, list_all_cars, list_all_tracks
 
 
 def validate_zip_file(value):
@@ -50,4 +50,66 @@ class UploadFileForm(forms.Form):
                 'accept': '.zip,application/zip',
             },
         )
+    )
+
+class UpdateCarForm(forms.Form):
+    """ Add car in the database """
+
+    name_car = forms.CharField(
+        label='car',
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control'}
+        ),
+    )
+    name_folder = forms.ChoiceField(
+        label='foldername',
+        choices=lazy(list_all_cars, tuple),
+        widget=forms.Select(
+            attrs={'class': 'form-control'}
+        ),
+    )
+    is_car_addon = forms.BooleanField(
+        label='iscaraddon',
+        required=False,
+        widget=forms.CheckboxInput(
+            attrs={'class': 'custom-control-input'}
+        )
+    )
+    form_identifiant = forms.CharField(
+        initial='car',
+        widget=forms.TextInput(
+            attrs={'class': 'd-none'}
+        ),
+    )
+
+class UpdateTrackForm(forms.Form):
+    """ Add track in the database """
+
+    name_track = forms.CharField(
+        label='track',
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control'}
+        ),
+    )
+    name_folder = forms.ChoiceField(
+        label='foldername',
+        choices=lazy(list_all_tracks, tuple),
+        widget=forms.Select(
+            attrs={'class': 'form-control'}
+        ),
+    )
+    is_track_addon = forms.BooleanField(
+        label='istrackaddon',
+        required=False,
+        widget=forms.CheckboxInput(
+            attrs={'class': 'custom-control-input'}
+        )
+    )
+    form_identifiant = forms.CharField(
+        initial='track',
+        widget=forms.TextInput(
+            attrs={'class': 'd-none'}
+        ),
     )
