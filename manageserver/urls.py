@@ -29,4 +29,5 @@ urlpatterns = [
     ),
     path('upload/', views.upload, name="upload"),
     path('update_database/', views.update_database, name="updatedb"),
+    path('update_pack/', views.update_pack, name="updatepack"),
 ]

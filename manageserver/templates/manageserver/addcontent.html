@@ -7,7 +7,7 @@
         <div class="col-12 col-lg-6 align-self-center text-white">
             <div class="card card-border bg-secondary">
                 <div class="card-header text-white text-center">
-                    <h3>Ajouter des voitures ou des pistes sur le serveur</h3>
+                    <h3><strong class="text-warning">1:</strong> Ajouter des voitures ou des pistes sur le serveur</h3>
                 </div>
                 <form method="post" action="." enctype="multipart/form-data">
                     {% csrf_token %}
@@ -35,7 +35,7 @@
         <div class="col-12 col-lg-4 align-self-center text-white">
             <div class="card card-border bg-secondary">
                 <div class="card-header text-white text-center">
-                    <h3>Ajouter des voitures dans la base de données</h3>
+                    <h3><strong class="text-warning">2:</strong> Ajouter des voitures dans la base de données</h3>
                 </div>
                 <form method="post" action="{% url 'manageserver:updatedb' %}">
                     {% csrf_token %}
@@ -70,7 +70,7 @@
         <div class="col-12 col-lg-4 offset-lg-1 align-self-center text-white">
             <div class="card card-border bg-secondary">
                 <div class="card-header text-white text-center">
-                    <h3>Ajouter des pistes dans la base de données</h3>
+                    <h3><strong class="text-warning">2:</strong> Ajouter des pistes dans la base de données</h3>
                 </div>
                 <form method="post" action="{% url 'manageserver:updatedb' %}">
                     {% csrf_token %}

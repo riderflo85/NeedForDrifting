@@ -9,7 +9,11 @@ from .utils import unzip_pack, read_server_cfg, write_server_cfg, exec_command
 @login_required
 def manager(request):
     request.session.set_expiry(0)
-    context = {"servers": Server.objects.all()}
+    context = {
+        "servers": Server.objects.all(),
+        "cars": Car.objects.all(),
+        "tracks": Track.objects.all()
+    }
     return render(request, 'manageserver/task.html', context)
 
 @login_required
@@ -116,8 +120,24 @@ def run_reboot_stop_server(request, id_server, cmd):
     server = Server.objects.get(pk=id_server)
 
     result = exec_command(server, cmd)
-    print(server.name_cmd+' '+cmd+' res cmd '+str(result))
+
     if result['check']:
         return JsonResponse({"error": False, "status_cmd": result['res']})
     else:
         return JsonResponse({"error": True})
+
+@login_required
+def update_pack(request):
+    if request.method == 'POST':
+        server = Server.objects.get(pk=request.POST['server'])
+        server.cars.clear()
+
+        for i in request.POST['cars'].split(','):
+            car = Car.objects.get(pk=int(i))
+            server.cars.add(car)
+        
+        track = Track.objects.get(pk=int(request.POST['track']))
+        server.track = track
+        server.save()
+
+        return JsonResponse({'updated': True})

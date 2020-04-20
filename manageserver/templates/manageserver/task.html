@@ -53,12 +53,74 @@
                         <button class="btn btn-danger" id="stopServ{{ server.pk }}" data-cmd="stop"><i class="fas fa-power-off"></i></button>
                     </div>
                     <button class="btn btn-primary mt-3" id="updatePack{{ server.pk }}">Mettre à jour le pack</button>
+                    <div class="toast mt-3 d-none" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='true' data-delay=5000 id="notifToastSuccess{{ server.pk }}">
+                        <div class="toast-header">
+                            <i class="fas fa-exclamation-circle mr-3 text-success"></i>
+                            <strong class="mr-auto">Information</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body text-dark">Pack mis à jour avec succès !</div>
+                    </div>
+                    <div class="toast mt-3 d-none" role="alert" aria-live="assertive" aria-atomic="true" data-autohide='true' data-delay=5000 id="notifToastError{{ server.pk }}">
+                        <div class="toast-header">
+                            <i class="fas fa-exclamation-circle mr-3 text-danger"></i>
+                            <strong class="mr-auto">Information</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body text-dark">Une erreur est survenu !!!</div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+
+{% for server in servers %}
+<!-- Modal box server 1 -->
+<div class="modal fade" id="modalPackServ{{ server.pk }}" tabindex="-1" role="dialog" aria-labelledby="modalPackServ{{ server.pk }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPackServ{{ server.pk }}">Mise à jour du pack du serveur {{ server.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="Track1" class="col-sm-2 col-form-label">Piste</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="selectTrack{{ server.pk }}">
+                            {% for track in tracks %}
+                            <option value="{{ track.pk }}">{{ track.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Car1" class="col-sm-2 col-form-label">Voitures</label>
+                    <div class="col-sm-10" id="parentSelectCar{{ server.pk }}">
+                        <select class="form-control mb-3" id="baseSelect{{ server.pk }}">
+                            {% for car in cars %}
+                            <option value="{{ car.pk }}">{{ car.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-success" id="addCar{{ server.pk }}"><i class="fas fa-plus"></i> <i class="fas fa-car"></i></button>
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="confirmUpdate{{ server.pk }}">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock content %}
 {% block script %}
@@ -67,5 +129,6 @@
 <script src="{% static 'manageserver/js/script.js' %}"></script>
 <script src="{% static 'manageserver/js/btncfg.js' %}"></script>
 <script src="{% static 'manageserver/js/cmdserver.js' %}"></script>
+<script src="{% static 'manageserver/js/updatepack.js' %}"></script>
 
 {% endblock script %}
