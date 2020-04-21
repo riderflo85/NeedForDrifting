@@ -71,15 +71,14 @@ def upgrade_pack(server, list_cars, track):
     zip_name = f"{server.name.replace(' ', '_')}.zip"
     file_path = server.path_upload + zip_name
 
-    os.system(f'rm -r {server.path_upload}cars/*')
-    os.system(f'rm -r {server.path_upload}tracks/*')
+    try:
+        os.system(f"rm {file_path}")
+        os.system(f'rm -r {server.path_upload}cars/*')
+        os.system(f'rm -r {server.path_upload}tracks/*')
+    except:
+        pass    
 
     for car in list_cars:
         os.system(f"cp -r {car_dir}{car.folder_name} {server.path_upload}cars/")
 
     os.system(f"cp -r {track_dir}{track.folder_name} {server.path_upload}tracks/")
-    try:
-        os.system(f"rm {file_path}")
-    except:
-        pass
-    
