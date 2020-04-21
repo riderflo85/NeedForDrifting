@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from acserver.models import Server, Car, Track
 from .forms import UploadFileForm, UpdateCarForm, UpdateTrackForm
-from .utils import unzip_pack, read_server_cfg, write_server_cfg, exec_command
+from .utils import unzip_pack, read_server_cfg, write_server_cfg, exec_command, upgrade_pack
 
 
 @login_required
@@ -132,12 +132,17 @@ def update_pack(request):
         server = Server.objects.get(pk=request.POST['server'])
         server.cars.clear()
 
-        for i in request.POST['cars'].split(','):
+        cars = request.POST['cars'].split(',')
+        cars_objects = []
+        for i in cars:
             car = Car.objects.get(pk=int(i))
             server.cars.add(car)
+            cars_objects.append(car)
         
         track = Track.objects.get(pk=int(request.POST['track']))
         server.track = track
         server.save()
+
+        upgrade_pack(server, cars_objects, track)
 
         return JsonResponse({'updated': True})
