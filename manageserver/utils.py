@@ -64,3 +64,15 @@ def exec_command(server, cmd):
         return {"check": True, "res": res}
     except:
         return {"check": False}
+
+def upgrade_pack(server, list_cars, track):
+    car_dir = server.path_download + "content/cars/"
+    track_dir = server.path_download + "content/tracks/"
+
+    os.system(f'rm -r {server.path_upload}cars/*')
+    os.system(f'rm -r {server.path_upload}tracks/*')
+
+    for car in list_cars:
+        os.system(f"cp -r {car_dir}{car.folder_name} {server.path_upload}cars/")
+
+    os.system(f"cp -r {track_dir}{track.folder_name} {server.path_upload}tracks/")
