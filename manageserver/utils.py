@@ -68,6 +68,8 @@ def exec_command(server, cmd):
 def upgrade_pack(server, list_cars, track):
     car_dir = server.path_download + "content/cars/"
     track_dir = server.path_download + "content/tracks/"
+    zip_name = f"{server.name.replace(' ', '_')}.zip"
+    file_path = server.path_upload + zip_name
 
     os.system(f'rm -r {server.path_upload}cars/*')
     os.system(f'rm -r {server.path_upload}tracks/*')
@@ -76,3 +78,4 @@ def upgrade_pack(server, list_cars, track):
         os.system(f"cp -r {car_dir}{car.folder_name} {server.path_upload}cars/")
 
     os.system(f"cp -r {track_dir}{track.folder_name} {server.path_upload}tracks/")
+    os.system(f"rm {file_path}")
