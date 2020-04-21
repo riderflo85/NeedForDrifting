@@ -8,6 +8,7 @@ django-extensions = "*"
 
 [packages]
 django = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"

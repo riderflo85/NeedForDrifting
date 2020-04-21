@@ -1,0 +1,172 @@
+textarea {
+    display: none;
+    color: #e6e1dc;
+    background-color: #232323;
+    border: 0;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.account {
+    color: rgba(255,255,255,.5)
+}
+
+.account:hover {
+    color: rgba(255,255,255,.75)
+}
+
+.margin-form-login {
+    margin-top: 15vh;
+}
+
+.margin-manager-server {
+    margin-top: 2vh;
+}
+
+.title-form{
+    margin-bottom: 4vh;
+}
+
+.title-manager{
+    margin-bottom: 10vh;
+}
+
+.card {
+    border: 3px solid #242629 !important;
+}
+
+.card-border {
+    border-radius: 30px !important;
+}
+
+.fav-icon-bg {
+    color: #17a2b8 !important;
+}
+
+.text-color {
+    color: #339933;
+}
+
+.a-manager {
+    width: 70%;
+    height: 10rem;
+    padding-top: 3.7rem !important;
+    font-size: 1.3rem !important;
+    border: 0px solid;
+    border-radius: 40px !important;
+}
+
+.a-manager:hover {
+    font-size: 1.4rem !important;
+}
+
+.btn-manager {
+    width: 70%;
+    height: 10rem;
+    font-size: 1.3rem !important;
+    border: 0px solid;
+    border-radius: 40px !important;
+}
+
+.btn-manager:hover {
+    font-size: 1.4rem !important;
+}
+
+.list-group-item {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+.card-editor {
+    width: 50%;
+    height: 81vh;
+}
+
+.preview {
+    width: 99%;
+    height: 70vh;
+}
+
+.editor {
+    width: 100%;
+    height: 100%;
+}
+
+.bg-preview {
+    background-color: #232323;
+}
+
+.bg-header {
+    background-color: #2F343F !important;
+    color: #e6e1dc !important;
+    border: 3px solid #2F343F !important;
+    border-radius: 10px;
+}
+
+.servers-stat {
+    margin-top: 12vh;
+}
+
+.server-action {
+    background-color: #2F343F !important;
+    color: #e6e1dc;
+    width: 20rem;
+}
+
+.point-status {
+    height: 20px;
+    width: 20px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.status-running {
+    background-color: #28a745;
+}
+
+.status-stoping {
+    background-color: #dc3545;
+}
+
+.status-reboot {
+    background-color: #ffc107;
+}
+
+.custom-control-label { /* added for alignment with the switch */
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    padding-bottom: 0.1rem;
+}
+
+.custom-switch .custom-control-label::before {
+    left: -2.25rem !important;
+    height: 2rem;
+    width: 3.5rem !important;    /* it was 1.75rem before. Sliding way is longer than before. */
+    pointer-events: all !important;
+    border-radius: 1rem !important;
+}
+
+.custom-switch .custom-control-label::after {
+    top: calc(0.25rem + 2px);
+    left: calc(-2.25rem + 2px);
+    width: calc(2rem - 4px) !important;   /* it was calc(1rem - 4px) before. Oval is bigger than before. */
+    height: calc(2rem - 4px) !important;  /* it was calc(1rem - 4px) before. Oval is bigger than before. */
+    background-color: #adb5bd;
+    border-radius: 2rem !important; /*   it was 0.5rem before. Oval is bigger than before. */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .custom-switch .custom-control-label::after {
+        transition: none;
+    }
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+    background-color: #fff;
+    -webkit-transform: translateX(1.5rem) !important; /*translateX(0.75rem); */
+    transform: translateX(1.5rem) !important; /*translateX(0.75rem); */
+}
