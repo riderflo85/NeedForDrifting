@@ -78,4 +78,8 @@ def upgrade_pack(server, list_cars, track):
         os.system(f"cp -r {car_dir}{car.folder_name} {server.path_upload}cars/")
 
     os.system(f"cp -r {track_dir}{track.folder_name} {server.path_upload}tracks/")
-    os.system(f"rm {file_path}")
+    try:
+        os.system(f"rm {file_path}")
+    except:
+        pass
+    
