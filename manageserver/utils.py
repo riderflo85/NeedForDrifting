@@ -80,7 +80,7 @@ def upgrade_pack(server, list_cars, track):
 
     for car in list_cars:
         if car.addon:
-            os.system(f"cp -r {car_dir}{car.folder_name} {server.path_upload}cars/")
+            os.system(f"cp -r '{car_dir}{car.folder_name}' {server.path_upload}cars/")
 
     if track.addon:
-        os.system(f"cp -r {track_dir}{track.folder_name} {server.path_upload}tracks/")
+        os.system(f"cp -r '{track_dir}{track.folder_name}' {server.path_upload}tracks/")

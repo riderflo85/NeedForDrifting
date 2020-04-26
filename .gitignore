@@ -1,2 +1,8 @@
 .vscode
 .env
+acManager.sh
+server.log
+manageserver/__pycache__/
+needfordrifting/settings/staticfiles/
+needfordrifting/__pycache__/
+

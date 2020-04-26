@@ -19,19 +19,24 @@ function runCmd(listServer) {
                     url: `/manage_server/command/${serverId}/${cmd}`,
                     type: 'GET',
                     success: function (res) {
+			console.log(res);
                         if (res['error'] === false) {
                             roundStat.removeClass('status-running status-stoping status-reboot');
-                            if (res['status_cmd'] === "running" || res['status_cmd'] === "run") {
+                            if (res['status_cmd'] === "running") {
                                 roundStat.addClass('status-running');
-                            } else if (res['status_cmd'] === "restarting") {
+                            } else if (res['status_cmd'] === "run") {
+				roundStat.addClass('status_running');
+			    } else if (res['status_cmd'] === "restarting") {
                                 roundStat.addClass('status-reboot');
                                 setTimeout(function () {
                                     roundStat.removeClass('status-reboot');
                                     roundStat.addClass('status-running');
                                 },2000);
-                            } else if (res['status_cmd'] === "stoping" || res['status_cmd'] === "kill") {
+                            } else if (res['status_cmd'] === "stoping") {
                                 roundStat.addClass('status-stoping');
-                            }
+                            } else if (res['status_cmd'] === "kill") {
+				roundStat.addClass('status-stoping');
+			    }
                         } else {
                             let balise = `<p class='text-warning' id='errorMsg${serverId}'>Une erreur c'est produite</p>`;
                             $(balise).appendTo(`#bodyBtn${serverId}`)

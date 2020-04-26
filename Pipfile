@@ -9,6 +9,7 @@ django-extensions = "*"
 [packages]
 django = "*"
 gunicorn = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.8"
