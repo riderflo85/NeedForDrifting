@@ -11,3 +11,13 @@ body {
     height: 5rem;
     background: linear-gradient(#343A40, 80%, rgba(52, 58, 64, 0.1));
 }
+
+.scroll-tools {
+    height: 25rem;
+    overflow: auto;
+}
+
+.text-scroll {
+    position: absolute;
+    left: 10px;
+}
