@@ -2,7 +2,8 @@
 .env
 acManager.sh
 server.log
-manageserver/__pycache__/
-needfordrifting/settings/staticfiles/
-needfordrifting/__pycache__/
+manageserver/__pycache__
+needfordrifting/settings/staticfiles
+needfordrifting/settings/__pycache__
+needfordrifting/__pycache__
 
