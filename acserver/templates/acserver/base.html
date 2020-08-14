@@ -53,6 +53,8 @@
                         <a class="nav-link" href="{% url 'manageserver:manager' %}">Gestion serveur <i class="fas fa-server"></i></a>
                     </li>
                 </ul>
+                <p class="nav-link account m-0 d-none" id="userToken">{{ user.token }}</p>
+                <a class="nav-link account" id="displayToken" href="#">API <i class="fas fa-key"></i></a>
                 <a class="nav-link account" href="{% url 'manageserver:logout' %}">disconnect <i class="fas fa-sign-out-alt"></i></a>
                 {% else %}
                 <ul class="navbar-nav mr-auto">
@@ -83,5 +85,9 @@
 
     {% block script %}
     {% endblock script %}
+    {% if user.is_authenticated %}
+    <script src="{% static 'acserver/js/tokenuser.js' %}"></script>
+    {% endif %}
+
 </body>
 </html>
