@@ -5,5 +5,6 @@ from django.contrib.auth.models import AbstractUser
 class UserAC(AbstractUser):
     token = models.CharField(
         max_length=24,
-        null=True
+        null=True,
+        unique=True,
     )
