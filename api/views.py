@@ -3,7 +3,7 @@ from acserver.models import Server, Track
 from manageserver.utils import exec_command
 from .models import UserAC
 from .decorator import check_token
-from .utils import servers_to_json, update_track
+from .utils import servers_to_json, update_track, tracks_to_json
 
 
 @check_token
@@ -33,6 +33,20 @@ def get_all_servers(request):
         servers = Server.objects.all()
         dict_servers = servers_to_json(servers)
         response['servers'] = dict_servers
+        return JsonResponse(response)
+
+    else:
+        response['error'] = True
+        return JsonResponse(response)
+
+
+@check_token
+def get_all_tracks(request):
+    response = {'error': False}
+    if request.method == 'GET':
+        tracks = Track.objects.all()
+        list_tracks = tracks_to_json(tracks)
+        response['tracks'] = list_tracks
         return JsonResponse(response)
 
     else:

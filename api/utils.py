@@ -3,17 +3,34 @@ def servers_to_json(servers):
     Convert the QuerySet object to the JSON object for sending to the mobile app.
     """
 
-    dict_servers = []
+    list_servers = []
 
     for server in servers:
-        dict_servers.append({
+        list_servers.append({
             'id': str(server.id),
             'name': server.name,
             'status': server.status,
             'track': server.track.name
         })
 
-    return dict_servers
+    return list_servers
+
+
+def tracks_to_json(tracks):
+    """
+    Convert the QuerySet object to the JSON object for sending to the mobile app.
+    """
+
+    list_tracks = []
+
+    for track in tracks:
+        list_tracks.append({
+            'id': str(track.id),
+            'name': track.name,
+            'folder_name': track.folder_name
+        })
+
+    return list_tracks
 
 
 def update_track(server, new_track, new_config_track, max_clients):
