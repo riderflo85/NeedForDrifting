@@ -1,10 +1,11 @@
 import os
 import subprocess
-from acserver.models import Server
 
 
 def unzip_pack(file, server):
     """ Unzip the files pack in the folder on the server """
+
+    path = ''
 
     if file.name == "cars.zip":
         path = server.path_download
