@@ -33,7 +33,7 @@ def update_track(server, new_track, new_config_track, max_clients):
                 if new_line.startswith('TRACK='):
                     track = new_line
                     index_equal = track.find('=')
-                    track = track[:index_equal+1] + new_track + '\n'
+                    track = track[:index_equal+1] + new_track.folder_name + '\n'
                     new_data.append(track)
 
                 elif new_line.startswith('CONFIG_TRACK='):
@@ -54,6 +54,9 @@ def update_track(server, new_track, new_config_track, max_clients):
 
         with open(server.file_cfg, 'w') as file:
             file.writelines(new_data)
+
+        server.track = new_track
+        server.save()
 
         return True
 

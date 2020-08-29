@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from acserver.models import Server
+from acserver.models import Server, Track
 from manageserver.utils import exec_command
 from .models import UserAC
 from .decorator import check_token
@@ -62,11 +62,12 @@ def change_track(request):
     response = {'error': False}
     if request.method == 'GET':
         id_server = request.GET['server_id']
-        track = request.GET['track']
+        id_track = request.GET['track_id']
         config_track = request.GET['config_track']
         max_clients = request.GET['max_clients']
 
         server = Server.objects.get(pk=int(id_server))
+        track = Track.objects.get(pk=int(id_track))
 
         done = update_track(server, track, config_track, max_clients)
         response['state'] = done
