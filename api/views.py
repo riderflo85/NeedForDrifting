@@ -1,10 +1,9 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from acserver.models import Server
+from acserver.models import Server, Track
 from manageserver.utils import exec_command
 from .models import UserAC
 from .decorator import check_token
-from .utils import servers_to_json
+from .utils import servers_to_json, update_track, tracks_to_json
 
 
 @check_token
@@ -42,6 +41,20 @@ def get_all_servers(request):
 
 
 @check_token
+def get_all_tracks(request):
+    response = {'error': False}
+    if request.method == 'GET':
+        tracks = Track.objects.all()
+        list_tracks = tracks_to_json(tracks)
+        response['tracks'] = list_tracks
+        return JsonResponse(response)
+
+    else:
+        response['error'] = True
+        return JsonResponse(response)
+
+
+@check_token
 def run_cmd(request):
     response = {'error': False}
     if request.method == 'GET':
@@ -50,6 +63,28 @@ def run_cmd(request):
         server = Server.objects.get(pk=int(id_server))
         res = exec_command(server, command)
         response['state'] = res
+
+        return JsonResponse(response)
+
+    else:
+        response['error'] = True
+        return JsonResponse(response)
+
+
+@check_token
+def change_track(request):
+    response = {'error': False}
+    if request.method == 'GET':
+        id_server = request.GET['server_id']
+        id_track = request.GET['track_id']
+        config_track = request.GET['config_track']
+        max_clients = request.GET['max_clients']
+
+        server = Server.objects.get(pk=int(id_server))
+        track = Track.objects.get(pk=int(id_track))
+
+        done = update_track(server, track, config_track, max_clients)
+        response['state'] = done
 
         return JsonResponse(response)
 
